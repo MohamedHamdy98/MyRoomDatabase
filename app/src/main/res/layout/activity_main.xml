@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="user"
+            type="com.momoandroid.myroomdatabase.models.User" />
+        <variable
+            name="handler"
+            type="com.momoandroid.myroomdatabase.ui.MainActivity.Handler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.MainActivity">
+        <EditText
+            android:id="@+id/editText_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="First Name"
+            android:text="@{user.id}"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:textAllCaps="false" />
+        <EditText
+            android:id="@+id/editText_firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="First Name"
+            android:text="@{user.firstName}"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:textAllCaps="false" />
+
+        <EditText
+            android:id="@+id/editText_lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="Last Name"
+            android:text="@{user.lastName}"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:textAllCaps="false" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="save"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:layout_gravity="left"
+                android:onClick="@{handler :: saveData}"/>
+            <Button
+                android:id="@+id/button_get"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="get"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:layout_gravity="right"
+                android:onClick="@{handler :: getData}"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/button_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="update"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:layout_gravity="left"
+                android:onClick="@{handler :: updateData}"/>
+            <Button
+                android:id="@+id/button_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="delete"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:layout_gravity="right"
+                android:onClick="@{handler :: deleteData}"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#000"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="10dp"
+            android:id="@+id/recyclerViewRoom"
+            android:layout_width="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</layout>
